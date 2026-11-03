@@ -34,13 +34,13 @@ jobs:
             ubuntu-dev-tools \
             tox \
             wireguard \
-            $(\
-              ./tools/read-dependencies                   \
-                --requirements-file requirements.txt      \
+            $(
+              ./tools/read-dependencies \
+                --requirements-file requirements.txt \
                 --requirements-file test-requirements.txt \
-                --distro ubuntu                           \
-                --system-pkg-names 2> /dev/null           \
-                | tr '\n' ' '                             \
+                --distro ubuntu \
+                --system-pkg-names 2> /dev/null |
+                tr '\n' ' '
             )
       - name: Build package
         run: |

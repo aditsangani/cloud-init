@@ -11,7 +11,7 @@ on:
         required: true
         type: choice
         options:
-        - generic
+          - generic
       filter_tests:
         required: false
         type: string

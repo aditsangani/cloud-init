@@ -11,8 +11,8 @@ on:
         required: true
         type: choice
         options:
-        - generic
-        - minimal
+          - generic
+          - minimal
       filter_tests:
         required: false
         type: string
