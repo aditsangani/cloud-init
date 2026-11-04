@@ -44,13 +44,11 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.matching-changed-files.outputs.all_changed_and_modified_files }}
         run: |
-          if [ -z "${ALL_CHANGED_FILES}" ]
-          then
+          if [ -z "${ALL_CHANGED_FILES}" ]; then
             echo "There are no changed files in the repo which match the glob pattern \'${GLOBS_TO_SHELLCHECK}\' so shellcheck will not run"
           else
             RETAINED_CHANGED_FILES=$(git ls-files ${ALL_CHANGED_FILES} | tr '\n' ' ') #filter out deleted files
-            if [ -z "${RETAINED_CHANGED_FILES}" ]
-            then
+            if [ -z "${RETAINED_CHANGED_FILES}" ]; then
               echo "There are no changed files remaining in the repo which match the glob pattern \'${GLOBS_TO_SHELLCHECK}\' so shellcheck will not run"
             else
               echo "shellcheck will run on the remaining changed files: ${RETAINED_CHANGED_FILES}"

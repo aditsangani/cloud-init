@@ -30,11 +30,11 @@ jobs:
           # failures: too long for column  VersionString.Name.
           sudo DEBIAN_FRONTEND=noninteractive apt-get -qy update
           sudo DEBIAN_FRONTEND=noninteractive apt-get -qy install tox
-          ./tools/read-dependencies                             \
-          --requirements-file requirements.txt                  \
-          --requirements-file test-requirements.txt             \
-          --system-pkg-names --distro ubuntu 2> /dev/null       \
-          | xargs sudo DEBIAN_FRONTEND=noninteractive apt-get -qy install
+          ./tools/read-dependencies \
+            --requirements-file requirements.txt \
+            --requirements-file test-requirements.txt \
+            --system-pkg-names --distro ubuntu 2> /dev/null |
+            xargs sudo DEBIAN_FRONTEND=noninteractive apt-get -qy install
 
       - name: Generate coverage report and lint
         run: |

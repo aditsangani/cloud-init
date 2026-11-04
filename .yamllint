@@ -1,0 +1,9 @@
+extends: default
+rules:
+  document-start: disable
+  line-length: disable
+  new-lines:
+    type: platform
+  truthy:
+    allowed-values: ['true', 'false', 'on']
+    check-keys: false

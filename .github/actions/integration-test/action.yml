@@ -70,7 +70,7 @@ runs:
       # lxd_container. Only install the lxd snap for those platforms; cloud
       # platforms such as EC2 and Azure do not need it.
       if: ${{ contains(fromJSON('["lxd_vm", "lxd_container"]'), inputs.platform) }}
-      uses: canonical/setup-lxd@8c6a87bfb56aa48f3fb9b830baa18562d8bfd4ee # v1
+      uses: canonical/setup-lxd@8c6a87bfb56aa48f3fb9b830baa18562d8bfd4ee  # v1
       with:
         channel: 6/stable
     - name: Clean workspace
@@ -119,7 +119,7 @@ runs:
       # Run even when tests fail (to publish the failure report), but skip
       # when validation failed: there is no report to publish
       if: ${{ always() && steps.check-secrets.outcome == 'success' && steps.validate-inputs.outcome != 'failure' }}
-      uses: ctrf-io/github-test-reporter@024bc4b64d997ca9da86833c6b9548c55c620e40 # v1.0.26
+      uses: ctrf-io/github-test-reporter@024bc4b64d997ca9da86833c6b9548c55c620e40  # v1.0.26
       with:
         report-path: '${{ github.workspace }}/junit-report.xml'
         title: '${{ inputs.platform }}-${{ inputs.release }}-${{ inputs.image_type }}:${{ inputs.install_source }}'
@@ -147,7 +147,7 @@ runs:
         artifact-name: ctrf-report-${{ inputs.platform }}-${{ inputs.release }}-${{ inputs.image_type }}
     - name: Upload failure artifacts
       if: ${{ failure() }}
-      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f  # v6.0.0
       with:
         name: failure-${{ github.job }}
         path: ${{ github.workspace }}/cloud_init_test_logs/
